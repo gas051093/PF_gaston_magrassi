@@ -1,11 +1,6 @@
 let user = "admin";
 let pass = "admin";
 const equipos = [];
-if (login()) {
-    menu()
-} else { 
-    alert(`Lo siento, se agotaron los intentos, actualice la pagina`)
-}
 //login del usuario con validacion//
 function login() { 
     for (i = 5; i > 0; i--) {
@@ -18,32 +13,6 @@ function login() {
         }
     }
     return false
-}
-//funcion de seleccion de menu//
-function menu() { 
-    let select_menu = parseInt(prompt(`Bienvenido a la App de Csistemas \n Ingrese la opcion que desee realizar \n 1) Cargar equipo \n 2) ver lista de equipo \n 3) Borrar ultimo equipo \n 4) salir del sistema `))
-    while (select_menu !== 4) { 
-        switch (select_menu) { 
-            case 1:
-                agregar();
-                break;
-            case 2:
-                listar();
-                break;
-            case 3:
-                eliminar();
-                break;
-            default:
-                alert('lo siento, error de seleccion, intente nuevamente');
-                break;
-        }
-        select_menu = parseInt(
-          prompt(
-            `Ingrese la opcion que desee realizar \n 1) Cargar equipo \n 2) ver lista de equipo \n 3) Borrar ultimo equipo \n 4) salir del sistema `
-          )
-        );
-    }
-    alert(`Gracias por usar la app de Csistemas`)
 }
 //funcion de seleccion de agregar elementos al array//
 function agregar() { 
@@ -71,4 +40,36 @@ function eliminar() {
     } else { 
         alert(`La lista esta vacia`)
     }
+}
+//funcion de seleccion de menu//
+function menu() { 
+    let select_menu = parseInt(prompt(`Bienvenido a la App de Csistemas \n Ingrese la opcion que desee realizar \n 1) Cargar equipo \n 2) ver lista de equipo \n 3) Borrar ultimo equipo \n 4) salir del sistema `))
+    while (select_menu !== 4) { 
+        switch (select_menu) { 
+            case 1:
+                agregar();
+                break;
+            case 2:
+                listar();
+                break;
+            case 3:
+                eliminar();
+                break;
+            default:
+                alert('lo siento, error de seleccion, intente nuevamente');
+                break;
+        }
+        select_menu = parseInt(
+          prompt(
+            `Ingrese la opcion que desee realizar \n 1) Cargar equipo \n 2) ver lista de equipo \n 3) Borrar ultimo equipo \n 4) salir del sistema `
+          )
+        );
+    }
+    alert(`Gracias por usar la app de Csistemas`)
+}
+//inicio del sistema
+if (login()) {
+  menu();
+} else {
+  alert(`Lo siento, se agotaron los intentos, actualice la pagina`);
 }
