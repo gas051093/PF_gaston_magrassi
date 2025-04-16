@@ -1,0 +1,21 @@
+.form{
+    color: map-get($map: $colors, $key: primary);
+    &__upload{
+        background-color: map-get($map: $colors, $key: greysub );
+        border-radius: 15px;
+    }
+    &__find{
+        background-color: map-get($map: $colors, $key: greysub );
+        border-radius: 15px;
+    }
+    &__title{
+        color: map-get($map: $colors, $key: primary);
+    }
+    &__btn{
+        color: map-get($map: $colors, $key: primary );
+        background-color: map-get($map: $colors, $key: secondary );
+        &:hover{
+            background-color: map-get($map: $colors, $key:accent );
+        }
+    }
+}

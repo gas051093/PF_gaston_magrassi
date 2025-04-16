@@ -4,9 +4,105 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>demo01</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
     <script defer src="js/scrips.js"></script>
   </head>
   <body>
-    <h1>Gaston Magrassi</h1>
+    <div class="container-fluid bg-page">
+      <header class="row mt-3">
+        <section class="hero row m-0 p-0">
+           <article class="hero__container align-content-center m-0 p-0">
+            <div class="col-12 text-center">
+              <h1 class="hero__title m-0">Csistemas -- Centro Técnico</h1>
+              <p class="hero__subtitle">Sistema de control de taller</p>
+            </div>
+           </article>
+        </section>
+      </header>
+      <main>
+        <section class="form row my-3 px-5">
+            <article class="form__upload col-12">
+              <h2 class="form__title text-center my-4">Fomulario de carga</h2>
+              <form class="row text-center">
+                <div class="mb-3 col-lg-4 col-12">
+                  <label for="nombre" class="form-label">Nombre del cliente</label>
+                  <input type="text" class="form-control" id="nombre" name="nombre">
+                </div>
+                <div class="mb-3 col-lg-4 col-12">
+                  <label for="telefono" class="form-label">Telefono</label>
+                  <input type="tel" class="form-control" id="telefono" name="telefono">
+                </div>
+                <div class="mb-3 col-lg-4 col-12">
+                  <p>Numero de orden</p>
+                  <p id="numero_orden">0</p>
+                </div>
+                <div class="mb-3 col-lg-4 col-12">
+                  <label for="equipo" class="form-label">Tipo de equipo</label>
+                  <select class="form-select" aria-label="equipo" name="equipo" id="equipo">
+                    <option selected disabled>Seleccione una opción</option>
+                  </select>
+                </div>
+                <div class="mb-3 col-lg-4 col-12">
+                  <label for="marca" class="form-label">Marca</label>
+                  <input type="text" class="form-control" id="marca" name="marca" placeholder= "Ej: Samsung">
+                </div>
+                <div class="mb-3 col-lg-4 col-12">
+                  <label for="modelo" class="form-label">Modelo</label>
+                  <input type="text" class="form-control" id="modelo" name="modelo" placeholder="Ingrese el Nº de modelo">
+                </div>
+                <div class="mb-3 col-lg-4 col-12">
+                  <label for="serie" class="form-label">Nº de Serie</label>
+                  <input type="number" class="form-control" id="serie" name="serie" placeholder="Ingrese el Nº de serie">
+                </div>
+                <div class="mb-3 col-lg-4 col-12">
+                  <label for="fecha" class="form-label">Fecha de ingreso</label>
+                  <input type="datetime-local" class="form-control" id="fecha" name="fecha">
+                </div>
+                <div class="mb-3 col-12">
+                  <label for="descripcion" class="form-label">Descripción de la falla</label>
+                  <input type="text" class="form-control form__descrip" id="descripcion" name="descripcion" placeholder="Ingresá una descripción clara y detallada de la falla para facilitar el diagnóstico técnico.">
+                </div>
+                <div class="mb-3 col-12 text-end">
+                  <button type="submit" class="btn form__btn" id="cargar">Cargar equipo</button>
+                </div>
+              </form>
+            </article>
+
+            <article class="form__find col-12 mt-3">
+              <h3 class="form__title text-center my-4">Fomulario de Busqueda</h3>
+              <form class="row text-center">
+                <div class="mb-3 col-lg-4 col-12">
+                  <label for="nombre" class="form-label">Nombre del cliente</label>
+                  <input type="text" class="form-control" id="nombre_find" name="nombre">
+                </div>
+                <div class="mb-3 col-lg-4 col-12">
+                  <label for="equipo" class="form-label">Tipo de equipo</label>
+                  <select class="form-select" aria-label="equipo" name="equipo" id="equipo_find">
+                    <option selected disabled>Seleccione una opción</option>
+                  </select>
+                </div>
+                <div class="mb-3 col-lg-4 col-12">
+                  <label for="estado" class="form-label">Estado del equipo</label>
+                  <select class="form-select" aria-label="estado" name="estado" id="estado_find">
+                    <option selected disabled>Seleccione una opción</option>
+                  </select>
+                </div>
+                <div class="mb-3 col-12 text-end">
+                  <button type="submit" class="btn form__btn" id="buscar">Buscar</button>
+                </div>
+              </form>
+            </article>
+        </section>
+      </main>
+      <footer>
+
+      </footer>
+    </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
