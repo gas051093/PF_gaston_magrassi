@@ -13,9 +13,9 @@
     <script defer src="js/scrips.js"></script>
   </head>
   <body>
-    <div class="container-fluid bg-page">
-      <header class="row mt-3">
-        <section class="hero row m-0 p-0">
+    <div class="container-fluid bg_page">
+      <header class="row">
+        <section class="hero row m-0 mt-3 p-0">
            <article class="hero__container align-content-center m-0 p-0">
             <div class="col-12 text-center">
               <h1 class="hero__title m-0">Csistemas -- Centro Técnico</h1>
@@ -25,7 +25,7 @@
         </section>
       </header>
       <main>
-        <section class="form row my-3 px-5">
+        <section class="form row my-3 px-3">
             <article class="form__upload col-12">
               <h2 class="form__title text-center my-4">Fomulario de carga</h2>
               <form class="row text-center">
@@ -76,18 +76,22 @@
             <article class="form__find col-12 mt-3">
               <h3 class="form__title text-center my-4">Fomulario de Busqueda</h3>
               <form class="row text-center">
-                <div class="mb-3 col-lg-4 col-12">
-                  <label for="nombre" class="form-label">Nombre del cliente</label>
-                  <input type="text" class="form-control" id="nombre_find" name="nombre">
+                <div class="mb-3 col-lg-2 col-12">
+                  <label for="orden_find" class="form-label">Nº de orden</label>
+                  <input type="number" class="form-control" id="orden_find" name="orden_find" placeholder="Nº">
                 </div>
                 <div class="mb-3 col-lg-4 col-12">
-                  <label for="equipo" class="form-label">Tipo de equipo</label>
+                  <label for="nombre_find" class="form-label">Nombre del cliente</label>
+                  <input type="text" class="form-control" id="nombre_find" name="nombre">
+                </div>
+                <div class="mb-3 col-lg-3 col-12">
+                  <label for="equipo_find" class="form-label">Tipo de equipo</label>
                   <select class="form-select" aria-label="equipo" name="equipo" id="equipo_find">
                     <option selected disabled>Seleccione una opción</option>
                   </select>
                 </div>
-                <div class="mb-3 col-lg-4 col-12">
-                  <label for="estado" class="form-label">Estado del equipo</label>
+                <div class="mb-3 col-lg-3 col-12">
+                  <label for="estado_find" class="form-label">Estado del equipo</label>
                   <select class="form-select" aria-label="estado" name="estado" id="estado_find">
                     <option selected disabled>Seleccione una opción</option>
                   </select>
@@ -98,9 +102,19 @@
               </form>
             </article>
         </section>
+        <section class="row cards my-3 px-3">
+          <article class="row cards__container px-2 m-0 pb-5">
+            <h4 class="cards__title text-center my-4">Lista de equipos</h4>
+            <div class="cards__section col-lg-3 col-12 my-3 py-3">
+            </div>
+          </article>
+
+        </section>
       </main>
       <footer>
-
+          <div class="foot row border-top">
+            <p class="foot__text text-center my-3">@Gaston Magrassi -- Csistemas App 2025</p>
+          </div>
       </footer>
     </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

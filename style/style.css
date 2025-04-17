@@ -12,6 +12,7 @@
 }
 .hero__container {
   backdrop-filter: blur(5px);
+  box-shadow: 0px 5px 10px black;
 }
 .hero__title {
   font-style: italic;
@@ -27,11 +28,11 @@
   color: #ffffff;
 }
 .form__upload {
-  background-color: #4f4f4f;
+  background-color: #2e2e2e;
   border-radius: 15px;
 }
 .form__find {
-  background-color: #4f4f4f;
+  background-color: #2e2e2e;
   border-radius: 15px;
 }
 .form__title {
@@ -42,6 +43,30 @@
   background-color: #f07b44;
 }
 .form__btn:hover {
+  background-color: #03172B;
+}
+
+.cards__container {
+  background-color: #2e2e2e;
+  border-radius: 15px;
+}
+.cards__title {
+  color: #ffffff;
+}
+.cards__section {
+  background-color: #d4c7be;
+  border-radius: 15px;
+}
+
+.foot {
+  color: #ffffff;
+  background-color: #2e2e2e;
+}
+.foot__text {
+  font-style: italic;
+}
+
+.bg_page {
   background-color: #03172B;
 }
 

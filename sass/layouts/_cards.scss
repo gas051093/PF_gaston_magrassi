@@ -1,0 +1,13 @@
+.cards{
+    &__container{
+        background-color: map-get($map: $colors, $key: greysub);
+        border-radius: 15px;
+    }
+    &__title{
+        color: map-get($map: $colors, $key: primary);
+    }
+    &__section{
+        background-color: map-get($map: $colors, $key: light_primary );
+        border-radius: 15px;
+    }
+}
