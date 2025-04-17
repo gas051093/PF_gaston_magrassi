@@ -57,10 +57,10 @@ const find = () => {
     } if (f_estado) { 
         equipos_find = equipos_find.filter(equipos => equipos.estado == f_estado)
     }
-
+    
     content_cards.innerHTML = ""; //lo uso para limpiar el cuadro de listas antes de mostrar, para que repita las cards al buscar de nuevo
 
-    if (equipos_find.length === 0) {
+    if (equipos_find.length === 0 || !f_orden && !f_cliente && !f_tipo && !f_estado) { 
         let find_empty = document.createElement("p");
         find_empty.className = "cards__section  col-lg-5 col-12 my-3 py-3 text-center";
         find_empty.innerText = "No se encontraron resultados.";
