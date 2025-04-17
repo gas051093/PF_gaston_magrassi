@@ -44,15 +44,9 @@ const content_cards = document.getElementById("content_card");
 const find = () => { 
     const f_orden = document.getElementById("orden_find").value;
     const f_cliente = document.getElementById("nombre_find").value;
-    const f_tipo = document.getElementById("equipo").value;
+    const f_tipo = document.getElementById("equipo_find").value;
     const f_estado = document.getElementById("estado_find").value;
     let equipos_find = equipos;
-
-     if (!f_orden && !f_cliente && !f_tipo && !f_estado) {
-       f_msg.textContent =
-         "Por favor ingrese al menos un criterio de búsqueda.";
-       return; // Sale de la función sin realizar la búsqueda
-     }
 
     if (f_orden) {
         equipos_find = equipos_find.filter(equipos => equipos.id == f_orden )
@@ -68,6 +62,7 @@ const find = () => {
 
     if (equipos_find.length === 0) {
         let find_empty = document.createElement("p");
+        find_empty.className = "cards__section  col-lg-5 col-12 my-3 py-3 text-center";
         find_empty.innerText = "No se encontraron resultados.";
         content_cards.appendChild(find_empty);
     } else {
@@ -75,7 +70,7 @@ const find = () => {
             let card = document.createElement("div");
             card.className = "cards__section  col-lg-5 col-12 my-3 py-3";
             card.innerHTML = `
-                <h5>ID: ${equipo.id}</h5>
+                <h5>Nº de Orden: ${equipo.id}</h5>
                 <p>Cliente: ${equipo.cliente}</p>
                 <p>Tipo: ${equipo.tipo}</p>
                 <p>Marca: ${equipo.marca}</p>
