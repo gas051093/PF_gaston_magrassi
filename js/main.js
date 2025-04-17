@@ -1,5 +1,6 @@
 const f_msg = document.getElementById("text_info")
 const n_orden = document.getElementById("numero_orden");
+const content_cards = document.getElementById("content_card");
 let equipos = [];
 class Equipo{
     static id = 0;
@@ -16,10 +17,12 @@ class Equipo{
         this.estado = "Ingreso nuevo";
     }
 }
+// si el local tiene datos los actualizo con el array equipos y actualizo el ID de la clase Equipo
 if (localStorage.getItem("equipos")) {
   equipos = JSON.parse(localStorage.getItem("equipos"));
   Equipo.id = equipos[equipos.length -1].id;
 }
+// constructor de objetos que se llama desde el boton al cargar un equipo
 const new_equipo = () => { 
     const n_cliente = document.getElementById("nombre").value;
     const n_telefono = document.getElementById("telefono").value;
@@ -40,14 +43,13 @@ const new_equipo = () => {
         n_orden.textContent = `${Equipo.id +1}`;
     }
 }
-const content_cards = document.getElementById("content_card");
+//Funcion para buscar en el array
 const find = () => { 
     const f_orden = document.getElementById("orden_find").value;
     const f_cliente = document.getElementById("nombre_find").value;
     const f_tipo = document.getElementById("equipo_find").value;
     const f_estado = document.getElementById("estado_find").value;
     let equipos_find = equipos;
-
     if (f_orden) {
         equipos_find = equipos_find.filter(equipos => equipos.id == f_orden )
     } if (f_cliente) { 
@@ -57,15 +59,14 @@ const find = () => {
     } if (f_estado) { 
         equipos_find = equipos_find.filter(equipos => equipos.estado == f_estado)
     }
-    
     content_cards.innerHTML = ""; //lo uso para limpiar el cuadro de listas antes de mostrar, para que repita las cards al buscar de nuevo
-
+    //al menos un dato se debe ingresar en el formulario y el array nuevo de equipos_find debe tener un dato
     if (equipos_find.length === 0 || !f_orden && !f_cliente && !f_tipo && !f_estado) { 
         let find_empty = document.createElement("p");
         find_empty.className = "cards__section  col-lg-5 col-12 my-3 py-3 text-center";
         find_empty.innerText = "No se encontraron resultados.";
         content_cards.appendChild(find_empty);
-    } else {
+    } else { //si se obtiene algun parametro renderizo las cards en el HTML 
         equipos_find.forEach(equipo => {
             let card = document.createElement("div");
             card.className = "cards__section  col-lg-5 col-12 my-3 py-3";
@@ -84,7 +85,7 @@ const find = () => {
         });
     }
 }
-
+//eventos 
 const btn_add = document.getElementById("cargar");
 const btn_find = document.getElementById("buscar");
 btn_add.addEventListener("click", new_equipo);
