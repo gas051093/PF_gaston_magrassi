@@ -80,6 +80,7 @@ const find = () => {
                 <p>Fecha: ${equipo.fecha}</p>
                 <p>Descripción: ${equipo.descripcion}</p>
                 <p>Estado: ${equipo.estado}</p>
+                <button class="btn form__btn" id="modificar">Modificar estado</button>
             `;
             content_cards.appendChild(card);
         });
