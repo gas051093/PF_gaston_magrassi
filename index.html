@@ -15,7 +15,7 @@
   </head>
   <body>
     <div class="container-fluid bg_page">
-      <header class="row ">
+      <!-- <header class="row col-12">
         <section class="hero row m-0 p-0">
            <article class="hero__container align-content-center m-0 p-0">
             <div class="col-12 text-center">
@@ -24,10 +24,17 @@
             </div>
            </article>
         </section>
-      </header>
-      <main>
-        <section class="form row my-3 px-3">
-            <article class="form__upload col-12">
+      </header> -->
+      <nav class="row col-2 sidebar p-0 m-0">
+        <ul>
+          <li>Alta de Equipo</li>
+          <li>Buscar Equipo</li>
+          <li>Limpiar Memoria</li>
+        </ul>
+      </nav>
+      <main class="row col-9">
+        <section class="form">
+            <article class="form__upload">
               <h2 class="form__title text-center my-4">Fomulario de carga</h2>
               <form class="row text-center" id="form_carga">
                 <div class="mb-3 col-lg-4 col-12">
@@ -73,8 +80,7 @@
                 <button class="btn form__btn" id="cargar">Cargar equipo</button>
               </div>
             </article>
-
-            <article class="form__find col-12 mt-3">
+            <article class="form__find">
               <h3 class="form__title text-center my-4">Fomulario de Busqueda</h3>
               <form class="row text-center">
                 <div class="mb-3 col-lg-2 col-12">
@@ -103,20 +109,14 @@
               </div>
             </article>
         </section>
-        <section class="row cards my-3 px-3">
+        <!-- <section class="row cards my-3 px-3">
           <article class="row cards__container px-2 m-0 pb-5">
             <h4 class="cards__title text-center my-4">Lista de equipos</h4>
             <div id="content_card" class="row gap-4 justify-content-center">
             </div>
           </article>
-
-        </section>
+        </section> -->
       </main>
-      <footer>
-          <div class="foot row border-top">
-            <p class="foot__text text-center my-3">@Gaston Magrassi -- Csistemas App 2025</p>
-          </div>
-      </footer>
     </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
