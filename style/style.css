@@ -5,7 +5,7 @@
 }
 
 .hero {
-  height: 50vh;
+  height: 50dvh;
   background-image: url(../assets/img/hero.webp);
   background-size: cover;
   background-position: bottom;
@@ -21,38 +21,38 @@
 }
 .hero__subtitle {
   color: #ffffff;
-  text-shadow: 0px 3px 2px black;
+  text-shadow: 0px 2px 1px black;
 }
 
 .form {
-  color: #ffffff;
+  color: #000000;
 }
 .form__upload {
-  background-color: #2e2e2e;
+  background-color: #d3d3d3;
   border-radius: 15px;
 }
 .form__find {
-  background-color: #2e2e2e;
+  background-color: #d3d3d3;
   border-radius: 15px;
 }
 .form__title {
-  color: #ffffff;
+  color: #000000;
 }
 .form__btn {
-  color: #ffffff;
+  color: #000000;
   width: 10em;
   background-color: #f07b44;
 }
 .form__btn:hover {
-  background-color: #03172B;
+  background-color: #ffffff;
 }
 
 .cards__container {
-  background-color: #2e2e2e;
+  background-color: #d3d3d3;
   border-radius: 15px;
 }
 .cards__title {
-  color: #ffffff;
+  color: #000000;
 }
 .cards__section {
   background-color: #d4c7be;
@@ -60,15 +60,15 @@
 }
 
 .foot {
-  color: #ffffff;
-  background-color: #2e2e2e;
+  color: #000000;
+  background-color: #d3d3d3;
 }
 .foot__text {
   font-style: italic;
 }
 
 .bg_page {
-  background-color: #03172B;
+  background-color: #ffffff;
 }
 
 /*# sourceMappingURL=style.css.map */

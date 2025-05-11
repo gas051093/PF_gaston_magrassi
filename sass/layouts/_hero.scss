@@ -1,5 +1,5 @@
 .hero{
-    height: 50vh;
+    height: 50dvh;
     background-image: url(../assets/img/hero.webp);
     background-size: cover;
     background-position: bottom;
@@ -9,11 +9,11 @@
     }
     &__title{
         font-style: italic;
-        color: map-get($map: $colors, $key: primary);
+        color: map-get($map: $colors, $key: accent);
         text-shadow: 0px 3px 2px black;
     }
     &__subtitle{
-        color: map-get($map: $colors, $key: primary);
-        text-shadow: 0px 3px 2px black;
+        color: map-get($map: $colors, $key: accent);
+        text-shadow: 0px 2px 1px black;
     }
 }
