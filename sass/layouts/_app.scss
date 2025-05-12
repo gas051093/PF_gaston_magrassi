@@ -1,0 +1,6 @@
+.app{
+    &__form_container{
+        background-color: map-get($map: $colors, $key: primary );
+        border-radius: 10px;
+    }
+}

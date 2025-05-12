@@ -12,6 +12,6 @@ const set_options = (select_options) => {
     return set_data
 }
 set_options(document.getElementById("equipo"))(tipos);
-set_options(document.getElementById("equipo_find"))(tipos);
-set_options(document.getElementById("estado_find"))(estados);
-n_orden.textContent = `${Equipo.id +1}`;
+// set_options(document.getElementById("equipo_find"))(tipos);
+// set_options(document.getElementById("estado_find"))(estados);
+// n_orden.textContent = `${Equipo.id +1}`;

@@ -2,57 +2,99 @@
   padding: 0;
   margin: 0;
   font-family: "Inter", sans-serif;
+  border: 0.1px solid red;
 }
 
+.main_cont {
+  height: 100dvh;
+}
+
+.head {
+  color: #ffffff;
+  background-color: #0b5ed7;
+}
+
+.sidebar {
+  height: 100vh;
+}
+.sidebar__container {
+  transition: 500ms;
+  background-color: rgba(90, 143, 223, 0.8235294118);
+}
+.sidebar__logo {
+  width: 90px;
+}
 .sidebar__btn {
   width: 50px;
+  height: 50px;
+}
+.sidebar__item {
+  list-style: none;
+  text-align: start;
+  width: 100%;
+  background-color: #6f42c1;
+  color: #ffffff;
+}
+.sidebar__item:hover {
+  background-color: #5a379e;
+}
+.sidebar__item:active {
+  background-color: #2f116b;
+}
+.sidebar ul {
+  list-style: none;
+}
+.sidebar ul a {
+  text-decoration: none;
+}
+.sidebar__ocult {
+  display: none;
+  transition: 500ms;
+}
+
+.app__form_container {
+  background-color: #5a8fdf;
+  border-radius: 10px;
 }
 
 .form {
-  color: #000000;
+  color: #5a8fdf;
 }
 .form__upload {
-  background-color: #d3d3d3;
+  background-color: #adb5bd;
   border-radius: 15px;
 }
 .form__find {
-  background-color: #d3d3d3;
+  background-color: #adb5bd;
   border-radius: 15px;
 }
 .form__title {
-  color: #000000;
+  color: #5a8fdf;
 }
 .form__btn {
-  color: #000000;
+  color: #ffffff;
   width: 10em;
-  background-color: #f07b44;
+  background-color: #6f42c1;
 }
 .form__btn:hover {
-  background-color: #ffffff;
+  background-color: #5a379e;
+  color: #ffffff;
 }
 
 .cards__container {
-  background-color: #d3d3d3;
+  background-color: #adb5bd;
   border-radius: 15px;
 }
 .cards__title {
-  color: #000000;
+  color: #5a8fdf;
 }
 .cards__section {
-  background-color: #d4c7be;
+  background-color: #e9ecef;
   border-radius: 15px;
 }
 
-.foot {
-  color: #000000;
-  background-color: #d3d3d3;
-}
-.foot__text {
-  font-style: italic;
-}
-
 .bg_page {
-  background-color: #ffffff;
+  background-color: #ffc107;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,8 +1,19 @@
-$colors:(
-    primary: #000000,
-    secondary: #f07b44,
-    accent: #ffffff,
-    dark: #000000,
-    greysub: #d3d3d3,
-    light_primary: #d4c7be,
-)
+$colors: (
+  primary: #5a8fdf,
+  head: #0b5ed7,
+  primary_hover: #0b5ed7,
+  secondary: #6f42c1,
+  secondary_hover: #5a379e,
+  secondary_active: #2f116b,
+  accent: #ffc107,
+  accent_hover: #e0a800,
+  dark: #121212,
+  greysub: #adb5bd,
+  light_primary: #e9ecef,
+  text_light: #ffffff,
+  form_background: #f8f9fa,
+  form_border: #ced4da,
+  form_border_active: #0d6efd,
+  input_focus_shadow: #0d6efd40,
+  navbar: #5a8fdfd2,
+);

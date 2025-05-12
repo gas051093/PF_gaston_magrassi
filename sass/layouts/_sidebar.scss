@@ -1,5 +1,37 @@
 .sidebar{
+    height: 100vh;
+    &__container{
+        transition: 500ms;
+        background-color: map-get($map: $colors, $key: navbar );
+    }
+    &__logo{
+        width: 90px;
+    }
     &__btn{
         width: 50px;
+        height: 50px;
+    }
+    &__item{
+        list-style: none;
+        text-align: start;
+        width: 100%;
+        background-color: map-get($map: $colors, $key:secondary );
+        color: map-get($map: $colors, $key:text_light );
+        &:hover{
+            background-color: map-get($map: $colors, $key: secondary_hover);
+        }
+        &:active{
+            background-color: map-get($map: $colors, $key: secondary_active );
+        }
+    }
+    & ul{
+        list-style: none;
+        & a{
+            text-decoration: none;
+        }
+    }
+    &__ocult{
+        display: none;
+        transition: 500ms;
     }
 }
