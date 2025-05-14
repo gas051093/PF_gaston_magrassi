@@ -1,1 +1,12 @@
-.hero{}
+.hero{
+    &__title{
+        @include tablet{
+            text-align: center;
+        }
+    }
+    &__subtitle{
+        @include tablet{
+            text-align: center;
+        }
+    }
+}

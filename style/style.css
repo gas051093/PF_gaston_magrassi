@@ -2,7 +2,6 @@
   padding: 0;
   margin: 0;
   font-family: "Inter", sans-serif;
-  border: 0.1px solid red;
 }
 
 .main_cont {
@@ -29,7 +28,8 @@
   height: 50px;
 }
 .sidebar__item {
-  list-style: none;
+  border: 0px;
+  border-radius: 0px 50px 50px 0px;
   text-align: start;
   width: 100%;
   background-color: #6f42c1;
@@ -52,13 +52,24 @@
   transition: 500ms;
 }
 
+@media screen and (max-width: 992px) {
+  .hero__title {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 992px) {
+  .hero__subtitle {
+    text-align: center;
+  }
+}
+
 .app__form_container {
-  background-color: #5a8fdf;
+  background-color: #eaeaea;
   border-radius: 10px;
 }
 
 .form {
-  color: #5a8fdf;
+  color: #eaeaea;
 }
 .form__upload {
   background-color: #adb5bd;
@@ -69,7 +80,7 @@
   border-radius: 15px;
 }
 .form__title {
-  color: #5a8fdf;
+  color: #eaeaea;
 }
 .form__btn {
   color: #ffffff;
@@ -86,7 +97,7 @@
   border-radius: 15px;
 }
 .cards__title {
-  color: #5a8fdf;
+  color: #eaeaea;
 }
 .cards__section {
   background-color: #e9ecef;

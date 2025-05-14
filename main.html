@@ -27,7 +27,7 @@
                 <div class="row m-0 justify-content-center">
                   <img class="sidebar__logo my-4" src="assets/img/logoegm.png" alt="">
                   <nav class="p-0">
-                    <ul class="m-0 p-0">
+                    <ul class="m-0 p-0 pe-2">
                       <li class="p-0 mb-2"><button id="btn_new" class="sidebar__item ps-2"><i class="bi bi-plus-square me-2"></i>Alta de OT</button></li>
                       <li class="p-0 mb-2"><button id="btn_find" class="sidebar__item ps-2"><i class="bi bi-search me-2"></i>Buscar OT</button></li>
                       <li class="p-0 mb-2"><button id="btn_delete" class="sidebar__item ps-2"><i class="bi bi-trash3 me-2"></i>Eliminar memoria</button></li>
@@ -38,11 +38,11 @@
               <!-- contenerdor principal -->
               <div class="col-12 col-lg-10 app">
                 <div class="hero row m-0 mb-4 p-0"><!-- hero -->
-                  <h1 class="hero__title p-0 m-0">Bienvenido a Csistemas</h1>
-                  <p class="hero__subtitle p-0 m-0">Sistema de control de ingreso de Ordenes de trabajo</p>
+                  <h1 class="hero__title p-0 m-0 ">Bienvenido a Csistemas</h1>
+                  <p class="hero__subtitle p-0 m-0">Control de <strong>ordenes de trabajo</strong></p>
                 </div>
                 <div class="row m-0 p-0" id="app_render"> <!-- app // render -->
-                  <div class="col-12 app__form_container" id="altaOT">
+                  <div class="col-12 app__form_container py-3 d-none" id="altaOT">
                     <form class="row text-center" id="form_carga">
                       <div class="mb-3 col-lg-4 col-12">
                         <label for="nombre" class="form-label">Nombre del cliente</label>
@@ -81,7 +81,7 @@
                         <label for="descripcion" class="form-label">Descripción de la falla</label>
                         <input type="text" class="form-control form__descrip" id="descripcion" name="descripcion" placeholder="Ingresá una descripción clara y detallada de la falla para facilitar el diagnóstico técnico.">
                       </div>
-                      <div class="mb-3 row justify-content-center mx-5">
+                      <div class="mb-3 justify-content-center ">
                         <p class="text-center" id="text_info"></p>
                         <button class="btn form__btn" id="cargar">Cargar equipo</button>
                       </div>
