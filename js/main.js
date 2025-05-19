@@ -1,13 +1,13 @@
 const f_msg = document.getElementById("text_info")
 const n_orden = document.getElementById("numero_orden");
 const content_cards = document.getElementById("content_card");
+let equipos = [];
 function cap_fecha() {  // funcion para capturar fecha actual
     const today = new Date();
     const format_date = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
     const date_today = today.toLocaleDateString('es-AR', format_date);
     return date_today;
 }
-let equipos = [];
 class Equipo{
     static id = 0;
     constructor(cliente, telefono, tipo, marca, modelo, serie, fecha, descripcion) { 
@@ -30,7 +30,6 @@ if (localStorage.getItem("equipos")) {
 }
 // constructor de objetos que se llama desde el boton al cargar un equipo
 const new_equipo = () => { 
-
     const n_cliente = document.getElementById("nombre").value;
     const n_telefono = document.getElementById("telefono").value;
     const n_tipo = document.getElementById("equipo").value;
@@ -68,7 +67,7 @@ const new_equipo = () => {
             }
             Swal.fire({
               title: "Guardado",
-              text: "La orden se genero correctamente",
+              text: `La orden se genero correctamente para el cliente: ${n_cliente} `,
               showConfirmButton: true,
               allowOutsideClick: false,
               icon: "success",
@@ -122,22 +121,21 @@ const find = () => {
             content_cards.appendChild(card);
         });
     }
-    mod_state();
+    btn_card_event();
 }
-function mod_state() { //funcion capturar el id del boton de cada card
+function btn_card_event() { //funcion escuchar y caputar el id del boton de cada card
   const btn_mod = document.querySelectorAll(`[data-target="btn_card"]`);
   btn_mod.forEach((btn) => {
     btn.addEventListener("click", (e) => {
         const btn_id = e.currentTarget.id;
-        show_select(btn_id);
+        mod_state(btn_id); // llamo la funcion que contiene un sweetalert para cambiar el estado del equipo y paso el id del boton como parametro
     });
   });
 }
-
-async function show_select(btn_id) {
+async function mod_state(btn_id) {
     let input_select;
     try {
-        input_select = await call_json("/estados_equipos.json");
+        input_select = await call_json("/data/estados_equipos.json");
     } catch (err) { 
         Swal.fire({
             text: `${err}`

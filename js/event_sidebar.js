@@ -1,5 +1,6 @@
 const form_alta = document.getElementById("altaOT");
 const form_buscar = document.getElementById("buscarOT");
+//Funciones para mostrar en pantalla los form
 function show_alta() {
     form_buscar.classList.add('d-none')
     form_alta.classList.remove("d-none");
@@ -54,6 +55,7 @@ function clear_memori() {
           }
         });
 }
+// funcion para escuchar los botones de la barra de navegacion
 function select_menu() {
   const btn_select = document.querySelectorAll(".sidebar__item");
   btn_select.forEach((btn) => {

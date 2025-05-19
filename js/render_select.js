@@ -1,3 +1,4 @@
+//mismo render que el codigo de la 2da entrega pero le agrege la conexion al json
 // animacion toast para errores con el json
 const Toast = Swal.mixin({
   toast: true,
@@ -9,7 +10,7 @@ const Toast = Swal.mixin({
     toast.onmouseleave = Swal.resumeTimer;
   },
 });
-// en el afuncion async paso por parametro la url para llamar varios json
+// en la funcion async paso por parametro la url para llamar varios json
 async function call_json (url) { 
     try {
         const response = await fetch(url);
@@ -44,8 +45,8 @@ async function init_select(select, url) {
     }
     
 }
-// paramteros(id del select, url del json)
-init_select('equipo', '/tipos_equipos.json');
-init_select('equipo_find', '/tipos_equipos.json');
-init_select('estado_find', '/estados_equipos.json')
-n_orden.textContent = `${Equipo.id + 1}`;
+// paramteros de la funcion init_select(id del select, url del json)
+init_select('equipo', '/data/tipos_equipos.json');
+init_select('equipo_find', '/data/tipos_equipos.json');
+init_select('estado_find', '/data/estados_equipos.json')
+n_orden.textContent = `${Equipo.id + 1}`; //actualizar numero de orden en el DOM
