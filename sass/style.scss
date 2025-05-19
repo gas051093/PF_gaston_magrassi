@@ -1,13 +1,14 @@
 @import './variable/reset';
 @import './variable/mq';
 @import './variable/colors';
+@import './layouts/sidebar';
 @import './layouts/main';
 @import './layouts/head';
-@import './layouts/sidebar';
 @import './layouts/hero';
 @import './layouts/app';
 @import './layouts/form';
 @import './layouts/cards';
+@import './layouts/foot';
 
 .bg_page{
     background-color: map-get($map: $colors, $key: accent );

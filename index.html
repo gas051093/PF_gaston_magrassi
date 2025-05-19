@@ -11,113 +11,128 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
     <script defer src="js/main.js"></script>
-    <script defer src="js/selects.js"></script>
+    <script defer src="js/render_select.js"></script>
+    <script defer src="js/event_sidebar.js"></script>
   </head>
-  <body>
-    <div class="container-fluid bg_page">
-      <!-- <header class="row col-12">
-        <section class="hero row m-0 p-0">
-           <article class="hero__container align-content-center m-0 p-0">
-            <div class="col-12 text-center">
-              <h1 class="hero__title m-0">Csistemas -- Centro Técnico</h1>
-              <p class="hero__subtitle">Sistema de control de taller</p>
+<body>
+    <div class="container-fluid p-0">
+      <div class="main_cont d-flex flex-column">
+        <header class="row m-0 p-0">
+          <div class="head">
+            <p class="m-0 p-0  text-center">APP- Csistemas</p>
+          </div>
+        </header>
+        <div class="sidebar row m-0 p-0">
+          <div class="sidebar__container m-0 p-0 col-2 d-none d-lg-block">
+            <div class="row m-0 justify-content-center">
+              <img class="sidebar__logo my-4" src="assets/img/logoegm.png" alt="">
+              <nav class="p-0">
+                <ul class="m-0 p-0 pe-2">
+                  <li class="p-0 mb-2"><button id="btn_new" class="sidebar__item ps-2"><i class="bi bi-plus-square me-2"></i>Alta de OT</button></li>
+                  <li class="p-0 mb-2"><button id="btn_find" class="sidebar__item ps-2"><i class="bi bi-search me-2"></i>Buscar OT</button></li>
+                  <li class="p-0 mb-2"><button id="btn_delete" class="sidebar__item ps-2"><i class="bi bi-trash3 me-2"></i>Eliminar memoria</button></li>
+                </ul>
+              </nav>
             </div>
-           </article>
-        </section>
-      </header> -->
-      <nav class="row col-2 sidebar p-0 m-0">
-        <ul>
-          <li>Alta de Equipo</li>
-          <li>Buscar Equipo</li>
-          <li>Limpiar Memoria</li>
-        </ul>
-      </nav>
-      <main class="row col-9">
-        <section class="form">
-            <article class="form__upload">
-              <h2 class="form__title text-center my-4">Fomulario de carga</h2>
-              <form class="row text-center" id="form_carga">
-                <div class="mb-3 col-lg-4 col-12">
-                  <label for="nombre" class="form-label">Nombre del cliente</label>
-                  <input type="text" class="form-control" id="nombre" name="nombre">
+          </div>
+              <!-- contenerdor principal de la app -->
+              <div class="col-12 col-lg-10 app">
+                <div class="hero row m-0 mb-4 p-0"><!-- hero -->
+                  <h1 class="hero__title p-0 m-0 ">Bienvenido a Csistemas</h1>
+                  <p class="hero__subtitle p-0 m-0">Control de <strong>ordenes de trabajo</strong></p>
                 </div>
-                <div class="mb-3 col-lg-4 col-12">
-                  <label for="telefono" class="form-label">Telefono</label>
-                  <input type="tel" class="form-control" id="telefono" name="telefono">
+                <div class="row m-0 p-0 justify-content-center" id="app_render"> <!-- contenedor de formularios -->
+                  <div class="col-10 app__form_container py-3 my-3 " id="altaOT"> <!-- fomulario de carga-->
+                    <form action="submit" class="row text-center" id="form_carga">
+                      <div class="mb-3 col-lg-4 col-12">
+                        <label for="nombre" class="form-label">Nombre del cliente</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre">
+                      </div>
+                      <div class="mb-3 col-lg-4 col-12">
+                        <label for="telefono" class="form-label">Telefono</label>
+                        <input type="tel" class="form-control" id="telefono" name="telefono">
+                      </div>
+                      <div class="mb-3 col-lg-4 col-12">
+                        <p>Numero de orden</p>
+                        <p id="numero_orden">0</p>
+                      </div>
+                      <div class="mb-3 col-lg-4 col-12">
+                        <label for="equipo" class="form-label">Tipo de equipo</label>
+                        <select class="form-select" aria-label="equipo" name="equipo" id="equipo">
+                        </select>
+                      </div>
+                      <div class="mb-3 col-lg-4 col-12">
+                        <label for="marca" class="form-label">Marca</label>
+                        <input type="text" class="form-control" id="marca" name="marca" placeholder= "Ej: Samsung">
+                      </div>
+                      <div class="mb-3 col-lg-4 col-12">
+                        <label for="modelo" class="form-label">Modelo</label>
+                        <input type="text" class="form-control" id="modelo" name="modelo" placeholder="Ingrese el modelo">
+                      </div>
+                      <div class="mb-3 col-lg-4 col-12">
+                        <label for="serie" class="form-label">Nº de Serie</label>
+                        <input type="text" class="form-control" id="serie" name="serie" placeholder="Ingrese el Nº de serie">
+                      </div>
+                      <div class="mb-3 col-12">
+                        <label for="descripcion" class="form-label">Descripción de la falla</label>
+                        <input type="text" class="form-control form__descrip" id="descripcion" name="descripcion" placeholder="Ingresá una descripción clara y detallada de la falla para facilitar el diagnóstico técnico.">
+                      </div>
+                      <div class="mb-3 justify-content-center ">
+                        <p class="text-center" id="text_info"></p>
+                        <button class="btn form__btn" type="submit">Cargar equipo</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-10 app__form_container py-3 my-3 d-none" id="buscarOT"> <!-- formulario de busqueda -->
+                    <form action="submit" class="row text-center">
+                      <div class="mb-3 col-lg-2 col-12">
+                        <label for="orden_find" class="form-label">Nº de orden</label>
+                        <input type="number" class="form-control" id="orden_find" name="orden_find" placeholder="Nº">
+                      </div>
+                      <div class="mb-3 col-lg-4 col-12">
+                        <label for="nombre_find" class="form-label">Nombre del cliente</label>
+                        <input type="text" class="form-control" id="nombre_find" name="nombre">
+                      </div>
+                      <div class="mb-3 col-lg-3 col-12">
+                        <label for="equipo_find" class="form-label">Tipo de equipo</label>
+                        <select class="form-select" aria-label="equipo" name="equipo" id="equipo_find">
+                          <option value="" selected >Seleccione una opción</option>
+                        </select>
+                      </div>
+                      <div class="mb-3 col-lg-3 col-12">
+                        <label for="estado_find" class="form-label">Estado del equipo</label>
+                        <select class="form-select" aria-label="estado" name="estado" id="estado_find">
+                          <option value="" selected >Seleccione una opción</option>
+                        </select>
+                      </div>
+                      <div class="mb-3 text-start">
+                        <input type="checkbox" id="check_all" value="select_all">
+                        <label for="check_all">Buscar todos las ordenes </label>
+                      </div>
+                      <div class="mb-3">
+                        <button class="btn form__btn" type="submit">Buscar</button>
+                    </div>
+                    </form>
+                    <!-- render de cards de equipos -->
+                    <section class="col-12 cards my-3 px-3"> 
+                      <article class="cards__container px-2 m-0 pb-5">
+                        <h4 class="cards__title text-center my-4">Lista de equipos</h4>
+                        <div id="content_card" class="row gap-4 p-3 justify-content-center">
+                        </div>
+                      </article>
+                    </section>
+                  </div>
                 </div>
-                <div class="mb-3 col-lg-4 col-12">
-                  <p>Numero de orden</p>
-                  <p id="numero_orden">0</p>
-                </div>
-                <div class="mb-3 col-lg-4 col-12">
-                  <label for="equipo" class="form-label">Tipo de equipo</label>
-                  <select class="form-select" aria-label="equipo" name="equipo" id="equipo">
-                  </select>
-                </div>
-                <div class="mb-3 col-lg-4 col-12">
-                  <label for="marca" class="form-label">Marca</label>
-                  <input type="text" class="form-control" id="marca" name="marca" placeholder= "Ej: Samsung">
-                </div>
-                <div class="mb-3 col-lg-4 col-12">
-                  <label for="modelo" class="form-label">Modelo</label>
-                  <input type="text" class="form-control" id="modelo" name="modelo" placeholder="Ingrese el modelo">
-                </div>
-                <div class="mb-3 col-lg-4 col-12">
-                  <label for="serie" class="form-label">Nº de Serie</label>
-                  <input type="text" class="form-control" id="serie" name="serie" placeholder="Ingrese el Nº de serie">
-                </div>
-                <div class="mb-3 col-lg-4 col-12">
-                  <label for="fecha" class="form-label">Fecha de ingreso</label>
-                  <input type="datetime-local" class="form-control" id="fecha" name="fecha">
-                </div>
-                <div class="mb-3 col-12">
-                  <label for="descripcion" class="form-label">Descripción de la falla</label>
-                  <input type="text" class="form-control form__descrip" id="descripcion" name="descripcion" placeholder="Ingresá una descripción clara y detallada de la falla para facilitar el diagnóstico técnico.">
-                </div>
-              </form>
-              <div class="mb-3 row justify-content-center mx-5">
-                <p class="text-center" id="text_info"></p>
-                <button class="btn form__btn" id="cargar">Cargar equipo</button>
               </div>
-            </article>
-            <article class="form__find">
-              <h3 class="form__title text-center my-4">Fomulario de Busqueda</h3>
-              <form class="row text-center">
-                <div class="mb-3 col-lg-2 col-12">
-                  <label for="orden_find" class="form-label">Nº de orden</label>
-                  <input type="number" class="form-control" id="orden_find" name="orden_find" placeholder="Nº">
+              <div class="foot col-12 p-2 d-block d-lg-none">
+                <div class="row justify-content-center m-0 p-0">
+                  <button id="menu" class="foot__btn"><i class="bi bi-list"></i></button>
                 </div>
-                <div class="mb-3 col-lg-4 col-12">
-                  <label for="nombre_find" class="form-label">Nombre del cliente</label>
-                  <input type="text" class="form-control" id="nombre_find" name="nombre">
-                </div>
-                <div class="mb-3 col-lg-3 col-12">
-                  <label for="equipo_find" class="form-label">Tipo de equipo</label>
-                  <select class="form-select" aria-label="equipo" name="equipo" id="equipo_find">
-                    <option value="" selected >Seleccione una opción</option>
-                  </select>
-                </div>
-                <div class="mb-3 col-lg-3 col-12">
-                  <label for="estado_find" class="form-label">Estado del equipo</label>
-                  <select class="form-select" aria-label="estado" name="estado" id="estado_find">
-                    <option value="" selected >Seleccione una opción</option>
-                  </select>
-                </div>
-              </form>
-              <div class="mb-3 row justify-content-center mx-5">
-                  <button class="btn form__btn" id="buscar">Buscar</button>
               </div>
-            </article>
-        </section>
-        <!-- <section class="row cards my-3 px-3">
-          <article class="row cards__container px-2 m-0 pb-5">
-            <h4 class="cards__title text-center my-4">Lista de equipos</h4>
-            <div id="content_card" class="row gap-4 justify-content-center">
-            </div>
-          </article>
-        </section> -->
-      </main>
+        </div>
+      </div>
     </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

@@ -1,6 +1,12 @@
 const f_msg = document.getElementById("text_info")
 const n_orden = document.getElementById("numero_orden");
 const content_cards = document.getElementById("content_card");
+function cap_fecha() {  // funcion para capturar fecha actual
+    const today = new Date();
+    const format_date = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+    const date_today = today.toLocaleDateString('es-AR', format_date);
+    return date_today;
+}
 let equipos = [];
 class Equipo{
     static id = 0;
@@ -24,23 +30,50 @@ if (localStorage.getItem("equipos")) {
 }
 // constructor de objetos que se llama desde el boton al cargar un equipo
 const new_equipo = () => { 
+
     const n_cliente = document.getElementById("nombre").value;
     const n_telefono = document.getElementById("telefono").value;
     const n_tipo = document.getElementById("equipo").value;
     const n_marca = document.getElementById("marca").value;
     const n_modelo = document.getElementById("modelo").value;
     const n_serie = document.getElementById("serie").value;
-    const n_fecha = document.getElementById("fecha").value;
+    const n_fecha = cap_fecha();
     const n_descripcion = document.getElementById("descripcion").value;
-    if (!n_cliente || !n_telefono || !n_tipo || !n_marca || !n_modelo || !n_serie || !n_fecha || !n_descripcion) {
-        f_msg.textContent = "Por favor ingrese todos los datos del fomurlario, Muchas gracias.";
+    if (!n_cliente || !n_telefono || !n_tipo || !n_marca || !n_modelo || !n_serie  || !n_descripcion) {
+        Swal.fire({
+          title: "Error",
+          text: "Complete todos los datos del formulario",
+          icon: "warning",
+          allowOutsideClick: false,
+        });
     } else { 
         const new_equipo = new Equipo(n_cliente, n_telefono, n_tipo, n_marca, n_modelo, n_serie, n_fecha, n_descripcion);
-        equipos.push(new_equipo);
-        localStorage.setItem("equipos", JSON.stringify(equipos))
-        f_msg.textContent = "Equipo guardado con exito";
-        document.getElementById("form_carga").reset();
-        n_orden.textContent = `${Equipo.id +1}`;
+        Swal.fire({
+          title: "Guardando",
+          text: "Espere...",
+          showConfirmButton: false,
+          allowOutsideClick: false,
+          icon: "info",
+          timer: 3000,
+            timerProgressBar: true,
+        }).then(() => { 
+            try {
+                equipos.push(new_equipo);
+                localStorage.setItem("equipos", JSON.stringify(equipos))
+                document.getElementById("form_carga").reset();
+                n_orden.textContent = `${Equipo.id + 1}`;
+            } catch (err) {
+                Swal.fire(`Se encontro el siguiente error ${err}`);
+                return;
+            }
+            Swal.fire({
+              title: "Guardado",
+              text: "La orden se genero correctamente",
+              showConfirmButton: true,
+              allowOutsideClick: false,
+              icon: "success",
+            });
+        })
     }
 }
 //Funcion para buscar en el array
@@ -49,23 +82,27 @@ const find = () => {
     const f_cliente = document.getElementById("nombre_find").value;
     const f_tipo = document.getElementById("equipo_find").value;
     const f_estado = document.getElementById("estado_find").value;
+    const f_all = document.getElementById("check_all").checked;
     let equipos_find = equipos;
-    if (f_orden) {
-        equipos_find = equipos_find.filter(equipos => equipos.id == f_orden )
-    } if (f_cliente) { 
-        equipos_find = equipos_find.filter(equipos => equipos.cliente == f_cliente)
-    } if (f_tipo) { 
-        equipos_find = equipos_find.filter(equipos => equipos.tipo == f_tipo)
-    } if (f_estado) { 
-        equipos_find = equipos_find.filter(equipos => equipos.estado == f_estado)
+    if (!f_all) { 
+        if (f_orden) {
+          equipos_find = equipos_find.filter((equipos) => equipos.id == f_orden);
+        }
+        if (f_cliente) {equipos_find = equipos_find.filter((equipos) => equipos.cliente == f_cliente);
+        }
+        if (f_tipo) {equipos_find = equipos_find.filter((equipos) => equipos.tipo == f_tipo);
+        }
+        if (f_estado) {equipos_find = equipos_find.filter((equipos) => equipos.estado == f_estado);
+        };
     }
-    content_cards.innerHTML = ""; //lo uso para limpiar el cuadro de listas antes de mostrar, para que repita las cards al buscar de nuevo
+    content_cards.innerHTML = ""; //lo uso para limpiar el cuadro de listas antes de mostrar, para que no repita las cards al buscar de nuevo
     //al menos un dato se debe ingresar en el formulario y el array nuevo de equipos_find debe tener un dato
-    if (equipos_find.length === 0 || !f_orden && !f_cliente && !f_tipo && !f_estado) { 
-        let find_empty = document.createElement("p");
-        find_empty.className = "cards__section  col-lg-5 col-12 my-3 py-3 text-center";
-        find_empty.innerText = "No se encontraron resultados.";
-        content_cards.appendChild(find_empty);
+    if (equipos_find.length === 0 || !f_orden && !f_cliente && !f_tipo && !f_estado && !f_all) { 
+        Swal.fire({
+          title: "Intente de nuevo",
+          text: "No se encontro ninguna orden de trabajo.",
+          icon: "info",
+        });
     } else { //si se obtiene algun parametro renderizo las cards en el HTML 
         equipos_find.forEach(equipo => {
             let card = document.createElement("div");
@@ -80,15 +117,66 @@ const find = () => {
                 <p>Fecha: ${equipo.fecha}</p>
                 <p>Descripción: ${equipo.descripcion}</p>
                 <p>Estado: ${equipo.estado}</p>
-                <button class="btn form__btn" id="modificar">Modificar estado</button>
+                <button class="btn form__btn" data-target="btn_card" id="${equipo.id}">Modificar estado</button>
             `;
             content_cards.appendChild(card);
         });
     }
+    mod_state();
+}
+function mod_state() { //funcion capturar el id del boton de cada card
+  const btn_mod = document.querySelectorAll(`[data-target="btn_card"]`);
+  btn_mod.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+        const btn_id = e.currentTarget.id;
+        show_select(btn_id);
+    });
+  });
+}
+
+async function show_select(btn_id) {
+    let input_select;
+    try {
+        input_select = await call_json("/estados_equipos.json");
+    } catch (err) { 
+        Swal.fire({
+            text: `${err}`
+        });
+        return
+    }
+    let options = {};
+    for (const data of input_select) { 
+        options[data] = data;
+    }
+    const { value: estado_seleccionado } = await Swal.fire({
+      title: "Seleccione una opcion",
+      input: "select",
+      inputOptions: options,
+      showCancelButton: true,
+    });
+    if (estado_seleccionado) {
+        const id = parseInt(btn_id);
+        const equipo = equipos.find((e) => e.id === id);
+
+        if (equipo) {
+            equipo.estado = estado_seleccionado;
+            localStorage.setItem("equipos", JSON.stringify(equipos));
+            find();
+            Swal.fire({
+              title: "Estado actualizado",
+              text: `El equipo ahora está en estado: ${estado_seleccionado}`,
+              icon: "success",
+            });
+         }
+
+    }
 }
 //eventos 
-const btn_add = document.getElementById("cargar");
-const btn_find = document.getElementById("buscar");
-btn_add.addEventListener("click", new_equipo);
-btn_find.addEventListener("click", find);
-
+const alta_ot = document.getElementById("altaOT").addEventListener("submit", function (event) { 
+    event.preventDefault();
+    new_equipo();
+});
+const find_ot = document.getElementById("buscarOT").addEventListener("submit", function (event) { 
+    event.preventDefault();
+    find();
+})
