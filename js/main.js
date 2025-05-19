@@ -135,7 +135,7 @@ function btn_card_event() { //funcion escuchar y caputar el id del boton de cada
 async function mod_state(btn_id) {
     let input_select;
     try {
-        input_select = await call_json("/data/estados_equipos.json");
+        input_select = await call_json("./data/estados_equipos.json");
     } catch (err) { 
         Swal.fire({
             text: `${err}`

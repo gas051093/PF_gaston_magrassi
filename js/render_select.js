@@ -46,7 +46,7 @@ async function init_select(select, url) {
     
 }
 // paramteros de la funcion init_select(id del select, url del json)
-init_select('equipo', '../data/tipos_equipos.json');
-init_select('equipo_find', '../data/tipos_equipos.json');
-init_select('estado_find', '../data/estados_equipos.json')
+init_select('equipo', './data/tipos_equipos.json');
+init_select('equipo_find', './data/tipos_equipos.json');
+init_select('estado_find', './data/estados_equipos.json')
 n_orden.textContent = `${Equipo.id + 1}`; //actualizar numero de orden en el DOM
