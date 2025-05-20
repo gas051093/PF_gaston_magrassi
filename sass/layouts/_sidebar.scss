@@ -1,5 +1,5 @@
 .sidebar{
-    height: 100vh;
+    height: 100dvh;
     &__container{
         transition: 500ms;
         background-color: map-get($map: $colors, $key: navbar );
