@@ -1,5 +1,7 @@
 .hero{
+    transition: all 1s;
     &__title{
+        transition: all 1s;
         @include tablet{
             text-align: center;
         }

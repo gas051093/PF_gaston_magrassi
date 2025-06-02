@@ -1,3 +1,7 @@
 .main_cont{
     height: 100dvh;
+    &__efe{
+        transition: all 1s;
+        height: 100dvh;
+    }
 }

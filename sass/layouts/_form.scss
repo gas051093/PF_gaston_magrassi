@@ -13,11 +13,14 @@
     }
     &__btn{
         color: map-get($map: $colors, $key: text_light );
-        width: 10em;
+        width: fit-content;
         background-color: map-get($map: $colors, $key: secondary );
         &:hover{
             background-color: map-get($map: $colors, $key:secondary_hover );
             color: map-get($map: $colors, $key: text_light );
+        }
+        &--find{
+            font-size: 0.5em;
         }
     }
 }

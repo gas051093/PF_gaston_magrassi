@@ -1,19 +1,26 @@
 .sidebar{
     height: 100dvh;
     &__container{
-        transition: 500ms;
+        transition: all 1s;
         background-color: map-get($map: $colors, $key: navbar );
     }
     &__logo{
         width: 90px;
+        opacity: 1;
+        transition: opacity 1s;
     }
     &__item{
+        transition: all 1s;
         border: 0px;
         border-radius: 5px;
         text-align: start;
         width: 100%;
         background-color: map-get($map: $colors, $key:secondary );
         color: map-get($map: $colors, $key:text_light );
+        & span{
+            opacity: 1;
+            transition: opacity 1s;
+        }
         &:hover{
             background-color: map-get($map: $colors, $key: secondary_hover);
         }
@@ -27,8 +34,71 @@
             text-decoration: none;
         }
     }
-    &__ocult{
-        display: none;
-        transition: 500ms;
+    &.collapsed{
+        height: 100dvh;
+        .sidebar__container{
+            width: 60px;
+            align-items: center;
+        }
+        .sidebar__item{
+            transition: all 1s;
+            border: 0px;
+            border-radius: 5px;
+            text-align: center;
+            width: 100%;
+            background-color: map-get($map: $colors, $key:secondary );
+            color: map-get($map: $colors, $key:text_light );
+        &:hover{
+            background-color: map-get($map: $colors, $key: secondary_hover);
+        }
+        &:active{
+            background-color: map-get($map: $colors, $key: secondary_active );
+        }
+        }
+        .sidebar__item i{
+            margin-right: 0;
+            transition: all 1s;
+        }
+        .sidebar__item span{
+            display: none;
+        }
+        .sidebar__logo{
+           opacity: 0;
+            transition: opacity 0.6s;
+        }
+    }
+    @include tablet {
+        #col{
+            visibility: hidden;
+        }
+        .sidebar__container{
+            width: 60px;
+        }
+        .sidebar__item{
+            transition: all 1s;
+            border: 0px;
+            border-radius: 5px;
+            text-align: center;
+            width: 100%;
+            background-color: map-get($map: $colors, $key:secondary );
+            color: map-get($map: $colors, $key:text_light );
+        &:hover{
+            background-color: map-get($map: $colors, $key: secondary_hover);
+        }
+        &:active{
+            background-color: map-get($map: $colors, $key: secondary_active );
+        }
+        }
+        .sidebar__item i{
+            margin-right: 0;
+            transition: all 1s;
+        }
+        .sidebar__item span{
+            display: none;
+        }
+        .sidebar__logo{
+           opacity: 0;
+            transition: opacity 0.6s;
+        }
     }
 }

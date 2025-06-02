@@ -75,4 +75,10 @@ function select_menu() {
     });
   });
 }
+
+
+const sidebar = document.getElementById("sidebar");
+const col = document.getElementById("col").addEventListener("click", () => { 
+  sidebar.classList.toggle("collapsed");
+})
 select_menu();

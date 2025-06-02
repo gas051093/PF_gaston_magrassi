@@ -1,6 +1,7 @@
 const f_msg = document.getElementById("text_info")
 const n_orden = document.getElementById("numero_orden");
 const content_cards = document.getElementById("content_card");
+const tabla = document.getElementById("tabla_tbody");
 let equipos = [];
 function cap_fecha() {  // funcion para capturar fecha actual
     const today = new Date();
@@ -94,7 +95,7 @@ const find = () => {
         if (f_estado) {equipos_find = equipos_find.filter((equipos) => equipos.estado == f_estado);
         };
     }
-    content_cards.innerHTML = ""; //lo uso para limpiar el cuadro de listas antes de mostrar, para que no repita las cards al buscar de nuevo
+    tabla.innerHTML = "";//lo uso para limpiar el cuadro de listas antes de mostrar, para que no repita las cards al buscar de nuevo
     //al menos un dato se debe ingresar en el formulario y el array nuevo de equipos_find debe tener un dato
     if (equipos_find.length === 0 || !f_orden && !f_cliente && !f_tipo && !f_estado && !f_all) { 
         Swal.fire({
@@ -104,21 +105,17 @@ const find = () => {
         });
     } else { //si se obtiene algun parametro renderizo las cards en el HTML 
         equipos_find.forEach(equipo => {
-            let card = document.createElement("div");
-            card.className = "cards__section  col-lg-5 col-12 my-3 py-3";
+            let card = document.createElement("tr");
+            // card.className = "cards__section  col-lg-5 col-12 my-3 py-3";
             card.innerHTML = `
-                <h5>Nº de Orden: ${equipo.id}</h5>
-                <p>Cliente: ${equipo.cliente}</p>
-                <p>Tipo: ${equipo.tipo}</p>
-                <p>Marca: ${equipo.marca}</p>
-                <p>Modelo: ${equipo.modelo}</p>
-                <p>Serie: ${equipo.serie}</p>
-                <p>Fecha: ${equipo.fecha}</p>
-                <p>Descripción: ${equipo.descripcion}</p>
-                <p>Estado: ${equipo.estado}</p>
-                <button class="btn form__btn" data-target="btn_card" id="${equipo.id}">Modificar estado</button>
+                <th scope="row">${equipo.id}</th>
+                <th>${equipo.cliente}</th>
+                <th>${equipo.marca}</th>
+                <th>${equipo.tipo}</th>
+                <th>${equipo.estado}</th>
+                <th><button class="btn form__btn form__btn--find" data-target="btn_card" id="${equipo.id}"><i class="bi bi-pencil"></i></button></th>
             `;
-            content_cards.appendChild(card);
+            tabla.appendChild(card);
         });
     }
     btn_card_event();
